@@ -10,7 +10,13 @@
 		A704F3E51FAC4BF800833615 /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704F3DB1FAC4BF700833615 /* csenseIosBase.framework */; };
 		A704F3EA1FAC4BF800833615 /* csenseIosBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704F3E91FAC4BF800833615 /* csenseIosBaseTests.swift */; };
 		A704F3EC1FAC4BF800833615 /* csenseIosBase.h in Headers */ = {isa = PBXBuildFile; fileRef = A704F3DE1FAC4BF700833615 /* csenseIosBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7646D211FB51D520011BBEF /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7646D221FB51D520011BBEF /* csenseSwift.framework */; };
+		A7646D251FB552690011BBEF /* csenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7646D261FB552690011BBEF /* csenseTests.framework */; };
 		A7D3CD7C1FACA31800A8633F /* csenseTests.framework in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CD7B1FACA2E800A8633F /* csenseTests.framework */; };
+		BC23613DC777593DA874E47A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236E8B0A0EF5A1111C3918 /* Logger.swift */; };
+		BC2362841485D8F2BBABFDB3 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236F4B254F79D13C740B18 /* CGFloatExtensions.swift */; };
+		BC236AD314B75DAA1BD16C25 /* CGFloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2366BC802B6BBCF98B98BD /* CGFloatTests.swift */; };
+		BC236E545B47B0BF3598BA94 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23624A2E89EF1650DD7B9D /* LoggerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +36,13 @@
 		A704F3E41FAC4BF800833615 /* csenseIosBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = csenseIosBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A704F3E91FAC4BF800833615 /* csenseIosBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csenseIosBaseTests.swift; sourceTree = "<group>"; };
 		A704F3EB1FAC4BF800833615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7646D221FB51D520011BBEF /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7646D261FB552690011BBEF /* csenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D3CD7B1FACA2E800A8633F /* csenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC23624A2E89EF1650DD7B9D /* LoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
+		BC2366BC802B6BBCF98B98BD /* CGFloatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatTests.swift; sourceTree = "<group>"; };
+		BC236E8B0A0EF5A1111C3918 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		BC236F4B254F79D13C740B18 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7646D211FB51D520011BBEF /* csenseSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7646D251FB552690011BBEF /* csenseTests.framework in Frameworks */,
 				A704F3E51FAC4BF800833615 /* csenseIosBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +90,8 @@
 			children = (
 				A704F3DE1FAC4BF700833615 /* csenseIosBase.h */,
 				A704F3DF1FAC4BF700833615 /* Info.plist */,
+				BC236E1B5E007521428B34A9 /* Logger */,
+				BC23677161B8FD57BA40BF82 /* Extensions */,
 			);
 			path = csenseIosBase;
 			sourceTree = "<group>";
@@ -85,6 +101,8 @@
 			children = (
 				A704F3E91FAC4BF800833615 /* csenseIosBaseTests.swift */,
 				A704F3EB1FAC4BF800833615 /* Info.plist */,
+				BC2367DF42FCB786BE763C0A /* Extensions */,
+				BC236353575E2B52EA7C2ED2 /* Logger */,
 			);
 			path = csenseIosBaseTests;
 			sourceTree = "<group>";
@@ -92,9 +110,43 @@
 		A7D3CD791FACA2E800A8633F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7646D261FB552690011BBEF /* csenseTests.framework */,
+				A7646D221FB51D520011BBEF /* csenseSwift.framework */,
 				A7D3CD7B1FACA2E800A8633F /* csenseTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC236353575E2B52EA7C2ED2 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				BC23624A2E89EF1650DD7B9D /* LoggerTests.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		BC23677161B8FD57BA40BF82 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC236F4B254F79D13C740B18 /* CGFloatExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BC2367DF42FCB786BE763C0A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC2366BC802B6BBCF98B98BD /* CGFloatTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BC236E1B5E007521428B34A9 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				BC236E8B0A0EF5A1111C3918 /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +212,7 @@
 					A704F3DA1FAC4BF700833615 = {
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					A704F3E31FAC4BF800833615 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -208,6 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC23613DC777593DA874E47A /* Logger.swift in Sources */,
+				BC2362841485D8F2BBABFDB3 /* CGFloatExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +271,8 @@
 			files = (
 				A7D3CD7C1FACA31800A8633F /* csenseTests.framework in Sources */,
 				A704F3EA1FAC4BF800833615 /* csenseIosBaseTests.swift in Sources */,
+				BC236AD314B75DAA1BD16C25 /* CGFloatTests.swift in Sources */,
+				BC236E545B47B0BF3598BA94 /* LoggerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,16 +405,19 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = csenseIosBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.commonsense.csenseIosBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -371,16 +430,19 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = csenseIosBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.commonsense.csenseIosBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
