@@ -8,7 +8,6 @@ import csenseSwift
 
 public class Logger {
 
-
     private init() {
 
     }
@@ -21,40 +20,86 @@ public class Logger {
         print(message)
     }
 
-    public func logFatal(message: String?, file: String = #file, line: Int = #line, functionName: String = #function) {
+    public func logFatal(message: String?,
+                         file: String = #file,
+                         line: Int = #line,
+                         functionName: String = #function) {
         doLog(createLogLine(message: message, file: file, line: line, functionName: functionName))
     }
 
-    public func logWarning(message: String?, file: String = #file, line: Int = #line, functionName: String = #function) {
+    public func logWarning(message: String?,
+                           file: String = #file,
+                           line: Int = #line,
+                           functionName: String = #function) {
         doLog(createLogLine(message: message, file: file, line: line, functionName: functionName))
     }
 
-    public func logDebug(message: String?, file: String = #file, line: Int = #line, functionName: String = #function) {
+    public func logDebug(message: String?,
+                         file: String = #file,
+                         line: Int = #line,
+                         functionName: String = #function) {
         doLog(createLogLine(message: message, file: file, line: line, functionName: functionName))
     }
 
     private func doLog(_ message: String) {
-        if (mayLog) {
+        if mayLog {
             outputLogger(message)
         }
     }
 
-    private func createLogLine(message: String?, file: String = #file, line: Int = #line, functionName: String = #function) -> String {
-        return "\(file):\(line)\(functionName)) -  \(message ?? "")"
+    private func createLogLine(message: String?,
+                               file: String = #file,
+                               line: Int = #line,
+                               functionName: String = #function) -> String {
+        return "\(file):\(line) \(functionName)) -  \(message ?? "")"
     }
 }
 
 public extension UIViewController {
 
-    public func logFatal(message: String, file: String = #file, line: Int = #line, functionName: String = #function) {
+    public func logFatal(message: String,
+                         file: String = #file,
+                         line: Int = #line,
+                         functionName: String = #function) {
         Logger.shared.logFatal(message: message, file: file, line: line, functionName: functionName)
     }
 
-    public func logWarning(message: String, file: String = #file, line: Int = #line, functionName: String = #function) {
+    public func logWarning(message: String,
+                           file: String = #file,
+                           line: Int = #line,
+                           functionName: String = #function) {
         Logger.shared.logWarning(message: message)
     }
 
-    public func logDebug(message: String, file: String = #file, line: Int = #line, functionName: String = #function) {
+    public func logDebug(message: String,
+                         file: String = #file,
+                         line: Int = #line,
+                         functionName: String = #function) {
+        Logger.shared.logDebug(message: message, file: file, line: line, functionName: functionName)
+    }
+}
+
+
+public extension UIView {
+    
+    public func logFatal(message: String,
+                         file: String = #file,
+                         line: Int = #line,
+                         functionName: String = #function) {
+        Logger.shared.logFatal(message: message, file: file, line: line, functionName: functionName)
+    }
+    
+    public func logWarning(message: String,
+                           file: String = #file,
+                           line: Int = #line,
+                           functionName: String = #function) {
+        Logger.shared.logWarning(message: message)
+    }
+    
+    public func logDebug(message: String,
+                         file: String = #file,
+                         line: Int = #line,
+                         functionName: String = #function) {
         Logger.shared.logDebug(message: message, file: file, line: line, functionName: functionName)
     }
 }
