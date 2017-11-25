@@ -29,7 +29,7 @@ class LoggerTests : XCTestCase {
         Logger.shared.mayLog = true
         var didUpdate = false
         Logger.shared.outputLogger = { message in
-            message.contains("someLog").assert(true)
+            message.createLogString().contains("someLog").assert(true)
             didUpdate = true
         }
         Logger.shared.logFatal(message: "someLog")
