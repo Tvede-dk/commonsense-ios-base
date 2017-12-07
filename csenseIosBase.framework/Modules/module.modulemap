@@ -1,0 +1,11 @@
+framework module csenseIosBase {
+  umbrella header "csenseIosBase.h"
+
+  export *
+  module * { export * }
+}
+
+module csenseIosBase.Swift {
+    header "csenseIosBase-Swift.h"
+    requires objc
+}
