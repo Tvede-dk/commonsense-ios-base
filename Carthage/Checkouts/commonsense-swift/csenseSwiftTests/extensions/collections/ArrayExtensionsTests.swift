@@ -78,4 +78,12 @@ public class ArrayExtensionsTests: XCTestCase {
         arr.insertOrUpdate(index: 0, value: 50).assert(30)
         arr.assertCount(2)
     }
+
+    func testRepeateToSize(){
+        var arr = emptyArr
+        arr.repeate(toSize: 20).assertCount(0, message: "empty is hard to repeate")
+        arr.append(42)
+        arr.assertCount(1)
+        arr.repeate(toSize: 20).assertCount(20)
+    }
 }

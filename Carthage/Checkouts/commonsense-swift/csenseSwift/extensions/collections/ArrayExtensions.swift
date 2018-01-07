@@ -41,6 +41,20 @@ public extension Array {
         }
     }
 
+    /**
+     * Repeats this collection to the designated size, will loop over all content and copy that in order
+     * if the to size is less than, or this collection is empty, then an empty result will be returned
+     */
+    public func repeate(toSize: Int) -> [Element] {
+        guard let first = first, toSize > count else {
+            return []
+        }
+        let intCount = Int(count)
+        return toSize.mapTimes(generator: { (counter) -> Element in
+            let safeIndex = counter % intCount
+            return self.getSafe(index: safeIndex) ?? first
+        })
+    }
 }
 
 public extension Optional where Wrapped: Collection {
