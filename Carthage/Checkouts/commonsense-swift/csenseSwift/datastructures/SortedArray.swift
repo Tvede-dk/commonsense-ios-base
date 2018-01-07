@@ -26,7 +26,7 @@ public class SortedArray<T> {
     // MARK: public functions
     @discardableResult
     public func set(value: T, forIndex: Int) -> T? {
-        let index = data.binarySearchClosest(key: forIndex, extractor: extractorFunc)
+        let index = data.binarySearchClosest(valueToFind: forIndex, extractor: extractorFunc)
         //overwrite data
         if data.isIndexValid(index) && data[index].index == forIndex {
             let old = data[index]
@@ -41,7 +41,7 @@ public class SortedArray<T> {
 
     @discardableResult
     public func remove(forIndex: Int) -> T? {
-        let index = data.binarySearch(key: forIndex, extractor: extractorFunc)
+        let index = data.binarySearch(valueToFind: forIndex, extractor: extractorFunc)
         return index.ifNotNil(action: { index in
             return remove(forRawIndex: index)
         })
@@ -53,8 +53,16 @@ public class SortedArray<T> {
     }
 
     public func get(forIndex: Int) -> T? {
-        let index = data.binarySearch(key: forIndex, extractor: extractorFunc)
-        return getOpt(index: index)
+        return getWithRawIndex(forIndex: forIndex)?.item
+    }
+
+    public func getWithRawIndex(forIndex: Int) -> (item: T, rawIndex: Int )? {
+        let index = data.binarySearch(valueToFind: forIndex, extractor: extractorFunc)
+        let item = getOpt(index: index)
+        if let item = item, let index = index {
+            return (item, index)
+        }
+        return nil
     }
 
     public func get(forRawIndex: Int) -> T? {
@@ -69,6 +77,13 @@ public class SortedArray<T> {
         return data.count
     }
 
+    /**
+     * returns the raw index of the given index (the sparse index to a [0 -> count] index)
+     */
+    public func rawIndexOf(forIndex: Int) -> Int? {
+        return data.binarySearch(valueToFind: forIndex, extractor: extractorFunc)
+    }
+
     // MARK: internal functions
     private func getOpt(index: Int?) -> T? {
         return index.ifNotNil(action: { index in
@@ -81,18 +96,18 @@ public class SortedArray<T> {
     }
 }
 
-public func ==<T>(first: SortedArrayIndex<T>, second: SortedArrayIndex<T>) -> Bool where T: Equatable {
+public func == <T>(first: SortedArrayIndex<T>, second: SortedArrayIndex<T>) -> Bool where T: Equatable {
     return first.value == second.value
 }
 
-public func ==<T>(first: [SortedArrayIndex<T>], second: [SortedArrayIndex<T>]) -> Bool where T: Equatable {
+public func == <T>(first: [SortedArrayIndex<T>], second: [SortedArrayIndex<T>]) -> Bool where T: Equatable {
     return first.elementsEqual(second) { (first: SortedArrayIndex<T>, second: SortedArrayIndex<T>) in
         return first == second
     }
 }
 
 public extension SortedArray where T: Equatable {
-    public static func ==(first: SortedArray, second: SortedArray) -> Bool {
+    public static func == (first: SortedArray, second: SortedArray) -> Bool {
         if first.count != second.count {
             return false
         }

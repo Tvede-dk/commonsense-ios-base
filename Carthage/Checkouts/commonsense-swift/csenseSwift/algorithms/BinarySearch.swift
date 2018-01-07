@@ -9,20 +9,26 @@
 import Foundation
 
 public extension Array where Element: Comparable {
-    public func binarySearchClosest(key: Element) -> Int? {
-        return binarySearch(key: key, extractor: { $0 })
+    public func binarySearchClosest(valueToFind: Element) -> Int {
+        return binarySearchClosest(valueToFind: valueToFind, extractor: identityFunction())
+    }
+}
+
+public extension Array where Element == Int {
+    public func binarySearch(valueToFind: Int) -> Int? {
+        return binarySearch(valueToFind: valueToFind, extractor: identityFunction())
     }
 }
 
 public extension Array {
 
-    public func binarySearch<T: Comparable>(key: T, extractor: FunctionResult<Element, T>) -> Int? {
-        let temp = binarySearch(key: key, extractor: extractor, defaultValueFunction: { _ in -1 })
+    public func binarySearch<T: Comparable>(valueToFind: T, extractor: FunctionResult<Element, T>) -> Int? {
+        let temp = binarySearch(valueToFind: valueToFind, extractor: extractor, defaultValueFunction: { _ in -1 })
         return temp.isNegative.map(ifTrue: nil, ifFalse: temp)
     }
 
-    public func binarySearchClosest<T: Comparable>(key: T, extractor: FunctionResult<Element, T>) -> Int {
-        return binarySearch(key: key, extractor: extractor, defaultValueFunction: { value in value })
+    public func binarySearchClosest<T: Comparable>(valueToFind: T, extractor: FunctionResult<Element, T>) -> Int {
+        return binarySearch(valueToFind: valueToFind, extractor: extractor, defaultValueFunction: { value in value })
     }
 
     /**
@@ -30,7 +36,7 @@ public extension Array {
      *
      * defaultValueFunction : given the middle (from the end of the iteration), calculates the result.
      */
-    private func binarySearch<T: Comparable>(key: T,
+    private func binarySearch<T: Comparable>(valueToFind: T,
                                              extractor: FunctionResult<Element, T>,
                                              defaultValueFunction: FunctionResult<Int, Int>) -> Int {
         var lowerBound = 0
@@ -38,9 +44,9 @@ public extension Array {
         while lowerBound < upperBound {
             let midIndex = lowerBound.middle(upperBound: upperBound)
             let toLookAt = extractor(self[midIndex])
-            if toLookAt == key {
+            if toLookAt == valueToFind {
                 return midIndex
-            } else if toLookAt < key {
+            } else if toLookAt < valueToFind {
                 lowerBound = midIndex + 1
             } else {
                 upperBound = midIndex
