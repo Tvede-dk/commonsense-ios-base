@@ -11,3 +11,4 @@ variable_name:
     min_length: 2            # only min_length
 
 disabled_rules:
+    - vertical_whitespace
