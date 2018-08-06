@@ -76,13 +76,13 @@ class IntExtensionsTests: XCTestCase {
 
     func testPerformTimes() {
         0.performTimes { (_) in
-            failTests("should not be called")
+            failTest("should not be called")
         }
         (0 - 100).performTimes { (_) in
-            failTests("should not be called")
+            failTest("should not be called")
         }
         Int.min.performTimes { (_) in
-            failTests("should not be called")
+            failTest("should not be called")
         }
         var counter1Times = 0
         1.performTimes { (value) in

@@ -19,7 +19,7 @@ class LoggerTests : XCTestCase {
     func testMayLog(){
         Logger.shared.mayLog = false
         Logger.shared.outputLogger = {message in
-            self.failTests("Should not be called.")
+            self.failTest("Should not be called.")
         }
         Logger.shared.logFatal(message: "someMessage")
         Logger.shared.logWarning(message: "someMessage")

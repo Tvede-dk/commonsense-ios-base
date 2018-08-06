@@ -5,6 +5,7 @@
 
 import Foundation
 import XCTest
+import csenseTests
 @testable import csenseIosBase
 
 class DataTests: XCTestCase {

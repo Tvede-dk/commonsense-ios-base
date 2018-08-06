@@ -15,7 +15,7 @@ class CollectionExtensionsTests: XCTestCase {
     func testMapIndexed() {
         var collection: [String] = []
         collection.mapIndex { (_, _) in
-            failTests("should not be called on empty collection")
+            failTest("should not be called on empty collection")
         }.assertCount(0)
         collection.append("test")
         collection.mapIndex { (item, index) -> Int in

@@ -25,7 +25,7 @@ class BoolExtensionsTests: XCTestCase {
         }
         didCall.assert(true, message: "Should call the action in ifTrue on true value")
         false.ifTrue {
-            failTests("Should not be called")
+            failTest("Should not be called")
         }
     }
 
@@ -36,7 +36,7 @@ class BoolExtensionsTests: XCTestCase {
         }
         didCall.assert(true, message: "Should call the action in ifFalse on false value")
         true.ifFalse {
-            failTests("Should not be called, true is not false")
+            failTest("Should not be called, true is not false")
         }
     }
 
